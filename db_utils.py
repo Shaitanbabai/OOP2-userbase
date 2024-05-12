@@ -8,14 +8,14 @@ DATA_FILE = "users_data.xlsx"
 def get_users_from_db():
     try:
         data = pd.read_excel(DATA_FILE)
-        all_users = []  # Измените "users" на "all_users"
+        all_users = []  # Используем all_users вместо users
         for index, row in data.iterrows():
             user_id = int(row["user_id"])
             name = row["name"]
-            access_level = row["access_level"]  # Исправьте доступ к 'User'
-            user = users.User(user_id, name, access_level)  # Удалите эту строку
-            all_users.append(user)  # Измените "users" на "all_users"
-        return all_users  # Измените "users" на "all_users"
+            access_level = row["access_level"]  # Используем правильное имя столбца
+            user = users.User(user_id, name, access_level)  # Сохраняем объект user в список
+            all_users.append(user)  # Добавляем user в all_users
+        return all_users
     except FileNotFoundError:
         print(f"Файл базы данных {DATA_FILE} не найден.")
         return []
