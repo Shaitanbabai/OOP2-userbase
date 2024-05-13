@@ -28,7 +28,7 @@ class User:
     def get_access_level(self):
         return self.__access_level
 
-    def __str__(self):
+    def __repr__(self) -> str:
         return f"User ID: {self.__user_id}, Name: {self.__name}, Access Level: {self.__access_level}"
 
 

@@ -5,9 +5,15 @@ import db_utils  # Модуль для работы с базой данных
 def get_user_by_id(users_list):
     while True:
         try:
+            print(f"{users_list=}")  # посмотрим, что внутри
             user_id = int(input("Введите ID пользователя: "))
             for user in users_list:
+                print(f"{user}")
+                user: users.User  # добавим типизацию для подсветки синтаксиса.
                 if user.get_user_id() == user_id:
+                    if user.get_access_level() == "admin":
+                        user = users.Admin(user_id=user.get_user_id(), name=user.get_name())
+                    print(f"Returning {user=}")
                     return user
             print("Неверный ID пользователя. Попробуйте снова.")
         except ValueError:
